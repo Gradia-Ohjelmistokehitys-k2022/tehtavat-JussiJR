@@ -20,6 +20,8 @@
 * I needed to make some more or less Questionable modifications to headers in order to get this up and running.
 * Funny right?
 * 
+* hardest part was definetly that part where you need to find something for OpenGL and glad methods because glad's own documentation suck at most of the time.
+* 
 * And for addition it also handles initialization
 * 
 * EXTERNAL INCLUDES:
@@ -28,15 +30,13 @@
 *	- https://www.wikihow.com/Set-Up-OpenGL%E2%80%90GLFW%E2%80%90GLAD-on-a-Project-with-Visual-Studio - To get needed library includes for Linker
 *	- https://www.live2d.com/en/sdk/about/ - for some Anime Girl picture rendering stuff lol just kidding for rendering Live2D models
 *	- https://github.com/VictorGordan/opengl-tutorials/tree/main/YoutubeOpenGL%200%20-%20Install . to Get GLFW3.Lib file without needing to compile and glad init
-* 
-* Used Websites for research:
+*		only for files like 
+* USED FOR RESEARCH:
 *	- https://www.indeed.com/career-advice/career-development/normalization-formula - for normalizing the Color of back buffer for OpenGL
 *	- https://www.asciiart.eu/text-to-ascii-art - For Ascii art up
 *	- https://rgbacolorpicker.com/hex-to-rgba - For finding nice looking color 
 *	- https://www.symbolab.com/solver/algebra-calculator - As a calculator 
-* 
-* Used Websites for ideas:
-*	- https://stackoverflow.com/questions/20013566/c-typedef-stdfunction-how-to-use - idea for Debug print
+*	- https://www.glfw.org/docs/3.3/ - Documentation for GLFW
 * 
 *  WASTED HOURS: 0 // Increment till you go crazy
 */
@@ -91,6 +91,13 @@ int main(int argv,char** argc){
 		return ERROR_CODE_CUSTOM_OPENGL_HEXADECIMAL_INITIALIZATION_FAILURE;
 	}
 	
+	//Window hints
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	
+
 	GLFWwindow* window = glfwCreateWindow(WINDOW_SIZE_WIDTH, WINDOW_SIZE_HEIGHT, WINDOW_NAME_STRING, NULL, NULL);
 	glfwMakeContextCurrent(window); //Context
 
@@ -101,19 +108,17 @@ int main(int argv,char** argc){
 		return ERROR_CODE_CUSTOM_GLFW_HEXADECIMAL_INITIALIZATION_FAILURE;
 	}
 
-
-
 	//last resort initializations 
-
 	glClearColor(OPENGL_BUFFERS_COLOR_RESET_COLOR_RED_NORMALIZED, OPENGL_BUFFERS_COLOR_RESET_COLOR_GREEN_NORMALIZED,
 		OPENGL_BUFFERS_COLOR_RESET_COLOR_BLUE_NORMALIZED, OPENGL_BUFFERS_COLOR_RESET_COLOR_ALPHA_NORMALIZED); // Clear color
 
 	while (!glfwWindowShouldClose(window)) { // Main Loop
-		glfwWaitEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glfwSwapBuffers(window);
 
+
+		glfwSwapBuffers(window);
+		glfwWaitEvents();
 	}
 
 

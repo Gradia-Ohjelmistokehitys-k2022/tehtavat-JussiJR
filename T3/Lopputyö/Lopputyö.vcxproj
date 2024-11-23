@@ -157,8 +157,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
     </ClInclude>
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
