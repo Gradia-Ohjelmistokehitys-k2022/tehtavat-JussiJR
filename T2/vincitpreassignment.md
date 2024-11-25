@@ -7,7 +7,7 @@ Scrooge McDuck is once again requesting consultation from fellow ducks at Vincit
 Scrooge wants to use the application to get the following information for different date ranges he is analyzing:
 
 Additional information:
-
+ 
 - Both start and end dates should be included in a date range.
 - A day’s price means the price at 00:00 UTC time (use price data from as close to midnight as possible as the day’s price, if you don’t have a datapoint from exactly midnight.
 - Allow the user of your application to pass the start and end dates of the date range in some way, e.g. via input fields in a UI or as parameters to an API.
